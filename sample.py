@@ -19,7 +19,8 @@ class eventscheduler(object):
 
 if __name__ == "__main__":
 
-		stop = False
+		currenttime = time.strftime("%a, %d %b %Y %I:%M:%S")
+		print(currenttime)
 		
 		title = raw_input('Event: ')
 		time_input = raw_input('Date/Time (Wed, 23 May 2018 02:58:01):  ')
@@ -30,12 +31,4 @@ if __name__ == "__main__":
 
 		sc.save(title, time_input, location, note)
 
-		print(time_input)
-		while(stop != True):
-			currenttime = time.strftime("%a, %d %b %Y %I:%M:%S")
-			if time_input == currenttime:
-				print("It's Game Day!")
-				print("title:" + title)
-				break
-
-			print(currenttime)
+		
