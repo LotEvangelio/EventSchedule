@@ -12,30 +12,36 @@ class eventscheduler(object):
 
 	def save(self, title, time_input, location, note):
 
-		with open("output.txt","a+" + "\n") as f:
+		with open("output.txt","a+") as f:
 		    f.write(title + '\n' +  time_input +"\n" + location +'\n' + note +'\n' +'\n')
 		    f.read()
 		    f.close()
+
+	def remove(self,title, time_input, location, note):
+
+		with open("output.txt", "w") as f:
+			f.write(title + '\n' +  time_input +"\n" + location +'\n' + note +'\n' +'\n')
+			f.close()
 
 if __name__ == "__main__":
 
 		stop = False
 		
-		title = raw_input('Event: ')
-		time_input = raw_input('Date/Time (Wed, 23 May 2018 02:58:01):  ')
-		location = raw_input('Location: ')
-		note = raw_input('Note: ')
+		title = input('Event: ')
+		time_input = input('Date/Time (Mon, 21 May 2018 01:01:01):  ')
+		location = input('Location: ')
+		note = input('Note: ')
 
 		sc = eventscheduler(title, time_input, location, note)
 
 		sc.save(title, time_input, location, note)
+		sc.remove(title, time_input, location, note)
 
 		print(time_input)
 		while(stop != True):
 			currenttime = time.strftime("%a, %d %b %Y %I:%M:%S")
 			if time_input == currenttime:
 				print("It's Game Day!")
-				print("title:" + title)
+				print("title: " + title)
 				break
-
-			print(currenttime)
+				print(currenttime)
